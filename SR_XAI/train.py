@@ -197,7 +197,8 @@ def train(model='model1',model_name_s="new_upsample_n2norm_sr_model.pt",ep=10,lr
             min_com0,max_faith0=xai_score(images,y_batch,output2t,net=net,device=device)
             loss2=loss_function(output2, base2)
             loss1=loss_function(output, base)
-            loss += l0*(0.2*loss1+0.8*loss2)+l1*abs(min_com-min_com0)+l2*abs(max_faith-abs(max_faith0))
+             # Initially, we implemented the loss function as outlined in the referenced manuscript (https://arxiv.org/abs/2405.10008); however, the convergence was weak. To address this, we experimented with a variety of methodologies and discovered that imposing constraints on the upper and lower limits of the metrics—faithfulness and complexity, respectively—and tracking the absolute distance from the reconstructed explanation significantly improved convergence robustness. These limits were selected through repeated exploration of different values, leveraging the established baseline of existing XAI methodologies as a guide. Nonetheless, a more sophisticated analysis of the sensitivity of the results to these chosen limits remains an important avenue for future research.
+            loss += l0*(0.2*loss1+0.8*loss2)+l1*abs(min_com-min_com0)+l2*abs(max_faith-abs(max_faith0))   
             issm_acc.reset()
 
             run_loss.update(loss.item(), n=batch_n)
