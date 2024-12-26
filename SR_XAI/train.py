@@ -35,7 +35,7 @@ DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 torch.multiprocessing.set_sharing_strategy('file_system')
 
 
-def train(model='model1',model_name_s="new_upsample_n2norm_sr_model.pt",ep=10,lr=5e-3,roi_size=16,height=112,width=112,depth=112,channels=1,bz=4,DATA_ROOT1='None',DATA_ROOT2='None',PATH='none',PATH1='none',l1=0.4,l2=0.4,l0=0.2,class_base="1",scale=2,min_com=0.001,max_faith=0.96,cs='None',afs='None',names=['DeepLiftshap','KernelShape','Lime','GradShap','Saliency','Intgrag','DeepLift','GuidedBackprop','GuidedGradCam'],nam=['DeepLiftshap','a_batch_KernelShap','a_batch_Lime_','a_batch_gradshap_','a_batch_saliency_','a_batch_intgrad_','a_batch_DeepLift_','a_batch_GuidedBackprop_','GuidedGradCam']):
+def train(model='model1',model_name_s="new_upsample_n2norm_sr_model.pt",ep=10,lr=5e-3,roi_size=16,height=112,width=112,depth=112,channels=1,bz=4,DATA_ROOT1='None',DATA_ROOT2='None',PATH='none',PATH1='none',l1=0.3,l2=0.5,l0=0.2,class_base="1",scale=2,min_com=0.001,max_faith=0.96,cs='None',afs='None',names=['DeepLiftshap','KernelShape','Lime','GradShap','Saliency','Intgrag','DeepLift','GuidedBackprop','GuidedGradCam'],nam=['DeepLiftshap','a_batch_KernelShap','a_batch_Lime_','a_batch_gradshap_','a_batch_saliency_','a_batch_intgrad_','a_batch_DeepLift_','a_batch_GuidedBackprop_','GuidedGradCam']):
 
     batch_n = bz   
     num_epochs = ep
@@ -198,7 +198,7 @@ def train(model='model1',model_name_s="new_upsample_n2norm_sr_model.pt",ep=10,lr
             loss2=loss_function(output2, base2)
             loss1=loss_function(output, base)
              # Initially, we implemented the loss function as outlined in the referenced manuscript (https://arxiv.org/abs/2405.10008); however, the convergence was weak. To address this, we experimented with a variety of methodologies and discovered that imposing constraints on the upper and lower limits of the metrics—faithfulness and complexity, respectively—and tracking the absolute distance from the reconstructed explanation significantly improved convergence robustness. These limits were selected through repeated exploration of different values, leveraging the established baseline of existing XAI methodologies as a guide. Nonetheless, a more sophisticated analysis of the sensitivity of the results to these chosen limits remains an important avenue for future research.
-            loss += l0*(0.2*loss1+0.8*loss2)+l1*abs(min_com-min_com0)+l2*abs(max_faith-abs(max_faith0))   
+            loss += l0*(0.5*loss1+0.5*loss2)+l1*abs(min_com-min_com0)+l2*abs(max_faith-abs(max_faith0))   
             issm_acc.reset()
 
             run_loss.update(loss.item(), n=batch_n)
