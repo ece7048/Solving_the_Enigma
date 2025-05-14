@@ -3,4 +3,4 @@ The accelerated progress of artificial intelligence (AI) has popularized deep le
 ## Using agreement
 Please kindly if you use any of our code cite our paper:
 https://arxiv.org/abs/2405.10008
-https://arxiv.org/abs/2405.10008
+https://doi.org/10.1016/j.aiopen.2025.02.001
