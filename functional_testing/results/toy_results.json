@@ -1,0 +1,66 @@
+{
+  "dataset": "synthetic_16x16x16_gaussian",
+  "num_explainers": 9,
+  "weights": {
+    "DeepLiftshap": 0.4942707609068338,
+    "KernelShape": 0.21342202157224696,
+    "Lime": 0.07121113998208314,
+    "GradShap": 0.07980377557810889,
+    "Saliency": 0.03605039741593618,
+    "Intgrag": 0.04390098664892597,
+    "DeepLift": 0.022428234591327492,
+    "GuidedBackprop": 0.019598289277291677,
+    "GuidedGradCam": 0.01931439402724583
+  },
+  "individual_metrics": [
+    {
+      "name": "DeepLiftshap",
+      "faithfulness": 0.9250594673395487,
+      "complexity": 0.053955078125
+    },
+    {
+      "name": "KernelShape",
+      "faithfulness": 0.8693542150128789,
+      "complexity": 0.117431640625
+    },
+    {
+      "name": "Lime",
+      "faithfulness": 0.8201613606973509,
+      "complexity": 0.33203125
+    },
+    {
+      "name": "GradShap",
+      "faithfulness": 0.7623334857653209,
+      "complexity": 0.275390625
+    },
+    {
+      "name": "Saliency",
+      "faithfulness": 0.7153108354391768,
+      "complexity": 0.572021484375
+    },
+    {
+      "name": "Intgrag",
+      "faithfulness": 0.6532185372584012,
+      "complexity": 0.428955078125
+    },
+    {
+      "name": "DeepLift",
+      "faithfulness": 0.6045666510638368,
+      "complexity": 0.777099609375
+    },
+    {
+      "name": "GuidedBackprop",
+      "faithfulness": 0.5701082996794089,
+      "complexity": 0.838623046875
+    },
+    {
+      "name": "GuidedGradCam",
+      "faithfulness": 0.536169980538578,
+      "complexity": 0.80029296875
+    }
+  ],
+  "fused_metrics": {
+    "faithfulness": 0.9629136755999348,
+    "complexity": 0.04443359375
+  }
+}

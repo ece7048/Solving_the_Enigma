@@ -1,0 +1,55 @@
+# Inference configuration for SR_XAI.
+# Override any value at the command line with: --set key=value
+
+model: XAI_SwinMT
+model_name: training_sr_xai.pt
+ep: 1
+lr: 0.001
+roi_size: 64
+height: 64
+width: 64
+depth: 64
+channels: 1
+bz: 4
+
+# Data and output paths.
+DATA_ROOT1: ./data/subjects/
+DATA_ROOT2: ./data/subjects/
+PATH: ./outputs/
+PATH1: ./data/XAI_QNN/
+classifier_checkpoint: null
+save_nii: true
+
+# Loss weights and target XAI metric ranges.
+l0: 0.01
+l1: 0.29
+l2: 0.6
+class_base: "1"
+scale: 2
+min_com: 9.0
+max_faith: 0.9
+
+# Dataset naming convention.
+cs: "37_16"
+afs: explanation.nii
+names:
+  - DeepLiftshap
+  - KernelShape
+  - Lime
+  - GradShap
+  - Saliency
+  - Intgrag
+  - DeepLift
+  - GuidedBackprop
+  - GuidedGradCam
+nam:
+  - DeepLiftshap
+  - a_batch_KernelShap
+  - a_batch_Lime_
+  - a_batch_gradshap_
+  - a_batch_saliency_
+  - a_batch_intgrad_
+  - a_batch_DeepLift_
+  - a_batch_GuidedBackprop_
+  - GuidedGradCam
+

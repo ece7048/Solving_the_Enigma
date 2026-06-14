@@ -1,50 +1,42 @@
-from setuptools import setup
-from setuptools import find_packages
-#import pip
-
-# initial source code from: https://github.com/xtianmcd/GCNeuro
+from setuptools import find_packages, setup
 
 
-#%cd /content/gdrive/MyDrive/Colab/Workshop/torchquantum
-#!pip3 install --editable .
-# if quantum models
-
-#git clone https://github.com/google/jax
-#cd jax
-#pip install jaxlib
-
-
-setup(name='SR_XAI',
-      version='0.1',
-      description='Deep Learning 3D XAI and SR framework analysis in Python',
-      url='',
-      author='Michail Mamalakis',
-      author_email='mm2703@cam.ac.uk',
-      license='GPL-3.0+',
-      packages=['SR_XAI'],
-      install_requires=[
-         
-          'wandb',         
-	  'torch>=1.10',
-	  'nibabel',
-          'unfoldNd',
-          'torch_geometric',
-          'scikit-image',
-          'qiskit',
-          'torchvision',
-          'torchdata',
-          'matplotlib==3.3.4',
-	  'quantus',
-	  'scikit-learn',
-	  'scipy',
-          'captum',
-          'monai',
-          'pandas',
-          'seaborn',
-          'torchmetrics',
-          'einops',
-	],
-      zip_safe=False
+setup(
+    name="SR_XAI",
+    version="0.1.0",
+    description="Deep learning 3D XAI explanation optimizer in Python",
+    author="Michail Mamalakis",
+    author_email="mm2703@cam.ac.uk",
+    license="GPL-3.0+",
+    packages=find_packages(),
+    python_requires=">=3.9",
+    install_requires=[
+        "PyYAML",
+        "wandb",
+        "torch>=1.10",
+        "nibabel",
+        "unfoldNd",
+        "torch_geometric",
+        "scikit-image",
+        "qiskit",
+        "torchvision",
+        "torchdata",
+        "matplotlib==3.3.4",
+        "quantus",
+        "scikit-learn",
+        "scipy",
+        "captum",
+        "monai",
+        "pandas",
+        "seaborn",
+        "torchmetrics",
+        "einops",
+    ],
+    entry_points={
+        "console_scripts": [
+            "sr-xai=SR_XAI.cli:main",
+        ],
+    },
+    zip_safe=False,
 )
-
 
